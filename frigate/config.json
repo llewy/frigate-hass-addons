@@ -1,5 +1,5 @@
 {
-  "name": "Frigate NVR",
+  "name": "Fermentrack",
   "version": "1.13",
   "panel_icon": "mdi:cctv",
   "slug": "frigate",
@@ -7,17 +7,16 @@
   "url": "https://github.com/blakeblackshear/frigate",
   "startup": "application",
   "boot": "auto",
-  "webui": "http://[HOST]:[PORT:5000]/",
-  "watchdog": "http://[HOST]:[PORT:5000]/",
+  "webui": "http://[HOST]:[PORT:80]/",
+  "watchdog": "http://[HOST]:[PORT:80]/",
   "ingress": true,
-  "ingress_port": 5000,
+  "ingress_port": 80,
   "ingress_entry": "/",
   "ports": {
-    "5000/tcp": 5000,
-    "1935/tcp": 1935
+    "5000/tcp": 80
   },
   "ports_description": {
-    "5000/tcp": "Web interface (Not required for Hass.io Ingress)",
+    "80/tcp": "Web interface (Not required for Hass.io Ingress)",
     "1935/tcp": "RTMP streams"
   },
   "host_network": false,
@@ -30,9 +29,6 @@
   "usb": true,
   "tmpfs": true,
   "full_access": true,
-  "environment": {
-    "CONFIG_FILE": "/config/frigate.yml"
-  },
   "options": {},
   "schema": {},
   "services": ["mqtt:need"],
@@ -40,9 +36,5 @@
     "amd64",
     "armv7",
     "aarch64"
-  ],
-  "map": [
-    "media:rw",
-    "config:rw"
   ]
 }
